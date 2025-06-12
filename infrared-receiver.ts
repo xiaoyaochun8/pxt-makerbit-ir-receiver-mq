@@ -185,16 +185,11 @@ namespace makerbit {
       }
 
       const newCommand = irState.commandSectionBits >> 8;
-serial.writeLine(newCommand.toString())
       // Process a new command
       if (newCommand !== irState.activeCommand) {
-// serial.writeLine('a')
-// serial.writeLine(irState.activeCommand.toString())
         if (irState.activeCommand >= 0-1) {
-// serial.writeLine('b')
           const releasedHandler = irState.onIrButtonReleased.find(h => h.irButton === irState.activeCommand || IrButton.Any === h.irButton);
           if (releasedHandler) {
-// serial.writeLine('c')
             background.schedule(releasedHandler.onEvent, background.Thread.UserCallback, background.Mode.Once, 0);
           }
         }
