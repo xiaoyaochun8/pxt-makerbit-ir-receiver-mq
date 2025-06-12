@@ -5,45 +5,45 @@ const enum IrButton {
   //% block="any"
   Any = -1,
   //% block="▲"
-  Up = 0x62,
+  Up = 0x18,
   //% block=" "
   Unused_2 = -2,
   //% block="◀"
-  Left = 0x22,
+  Left = 0x10,
   //% block="OK"
-  Ok = 0x02,
+  Ok = 0x38,
   //% block="▶"
-  Right = 0xc2,
+  Right = 0x5a,
   //% block=" "
   Unused_3 = -3,
   //% block="▼"
-  Down = 0xa8,
+  Down = 0x4a,
   //% block=" "
   Unused_4 = -4,
   //% block="1"
-  Number_1 = 0x68,
+  Number_1 = 0xa2,
   //% block="2"
-  Number_2 = 0x98,
+  Number_2 = 0x62,
   //% block="3"
-  Number_3 = 0xb0,
+  Number_3 = 0xe2,
   //% block="4"
-  Number_4 = 0x30,
+  Number_4 = 0x22,
   //% block="5"
-  Number_5 = 0x18,
+  Number_5 = 0x02,
   //% block="6"
-  Number_6 = 0x7a,
+  Number_6 = 0xc2,
   //% block="7"
-  Number_7 = 0x10,
+  Number_7 = 0xe0,
   //% block="8"
-  Number_8 = 0x38,
+  Number_8 = 0xa8,
   //% block="9"
-  Number_9 = 0x5a,
+  Number_9 = 0x90,
   //% block="*"
-  Star = 0x42,
+  Star = 0x68,
   //% block="0"
-  Number_0 = 0x4a,
+  Number_0 = 0x98,
   //% block="#"
-  Hash = 0x52,
+  Hash = 0xb0,
 }
 
 const enum IrButtonAction {
@@ -185,13 +185,16 @@ namespace makerbit {
       }
 
       const newCommand = irState.commandSectionBits >> 8;
-
+serial.writeLine(newCommand.toString())
       // Process a new command
       if (newCommand !== irState.activeCommand) {
-
-        if (irState.activeCommand >= 0) {
+// serial.writeLine('a')
+// serial.writeLine(irState.activeCommand.toString())
+        if (irState.activeCommand >= 0-1) {
+// serial.writeLine('b')
           const releasedHandler = irState.onIrButtonReleased.find(h => h.irButton === irState.activeCommand || IrButton.Any === h.irButton);
           if (releasedHandler) {
+// serial.writeLine('c')
             background.schedule(releasedHandler.onEvent, background.Thread.UserCallback, background.Mode.Once, 0);
           }
         }
