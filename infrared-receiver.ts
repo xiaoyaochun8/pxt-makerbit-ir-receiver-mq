@@ -232,11 +232,11 @@ namespace makerbit {
    */
   //% subcategory="IR Receiver"
   //% blockId="makerbit_infrared_connect_receiver"
-  //% block="connect IR receiver at pin %pin and decode %protocol"
+  //% block="遥控器 初始化模块 pin %pin and decode %protocol"
   //% pin.fieldEditor="gridpicker"
   //% pin.fieldOptions.columns=4
   //% pin.fieldOptions.tooltips="false"
-  //% weight=90
+  //% weight=100
   export function connectIrReceiver(
     pin: DigitalPin,
     protocol: IrProtocol
@@ -281,11 +281,11 @@ namespace makerbit {
    */
   //% subcategory="IR Receiver"
   //% blockId=makerbit_infrared_on_ir_button
-  //% block="on IR button | %button | %action"
+  //% block="当遥控器按钮 | %button | %action"
   //% button.fieldEditor="gridpicker"
   //% button.fieldOptions.columns=3
   //% button.fieldOptions.tooltips="false"
-  //% weight=50
+  //% weight=99
   export function onIrButton(
     button: IrButton,
     action: IrButtonAction,
